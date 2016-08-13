@@ -1,0 +1,11 @@
+assert(getprop("ro.product.device") == "a8eltezh" ||
+getprop("ro.build.product") == "a8eltezh" || 
+getprop("ro.product.device") == "A8000" ||
+getprop("ro.build.product") == "A8000" || 
+getprop("ro.product.device") == "SM-A8000" ||
+getprop("ro.build.product") == "SM-A8000" || 
+abort("This package is for device: a8eltezh,A8000,SM-A8000; this device is " + getprop("ro.product.device") + "."););
+mount("ext4", "EMMC", "/dev/block/bootdevice/by-name/system", "/system");
+package_extract_file("boot.img", "/dev/block/bootdevice/by-name/boot");
+package_extract_dir("system", "/system");
+show_progress(0.100000, 0);

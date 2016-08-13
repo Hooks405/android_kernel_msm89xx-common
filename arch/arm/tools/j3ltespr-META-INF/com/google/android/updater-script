@@ -1,0 +1,11 @@
+assert(getprop("ro.product.device") == "j3ltespr" ||
+getprop("ro.build.product") == "j3ltespr" || 
+getprop("ro.product.device") == "J320P" ||
+getprop("ro.build.product") == "J320P" || 
+getprop("ro.product.device") == "SM-J320P" ||
+getprop("ro.build.product") == "SM-J320P" || 
+abort("This package is for device: j3ltespr,J320P,SM-J320P; this device is " + getprop("ro.product.device") + "."););
+mount("ext4", "EMMC", "/dev/block/bootdevice/by-name/system", "/system");
+package_extract_file("boot.img", "/dev/block/bootdevice/by-name/boot");
+package_extract_dir("system", "/system");
+show_progress(0.100000, 0);
